@@ -1,0 +1,59 @@
+on: [push]
+name: DOLL CIPHER CI
+jobs:
+  build_and_test:
+    name: DOLL CIPHER CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: "Running library tests."
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: -p doll-cipher -- --nocapture
+      
+      - name: "Get version info. (CLI binary)"
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --bin dc -- version
+      
+      - name: "Get help info. (CLI binary)"
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --bin dc -- help
+        
+      - name: "Generate a key of the highest security level. (CLI binary)"
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --bin dc -- genk iron
+      
+      - name: "Generate a key of the lowest security level. (CLI binary)"
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --bin dc -- genk msec
+      
+      - name: "Generate a key of mid-level security. (CLI binary)"
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --bin dc -- genk ssec
+      
+      - name: "Encrypt a message. (CLI binary)"
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --bin dc -- encr ckey "tkcbxp3ws61g7x6y44wcs68a8h71jjh8adbi3yg7q4e9btrdbqujczirog56ojbauewuihc7tb3veshoczfl0p0c12cmrvk6l111lur77e08wh6oqozxetp32s8kzvu0" ptxt "Hello World"
+      
+      - name: "Build the API binary."
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --bin dca --release

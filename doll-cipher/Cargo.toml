@@ -1,0 +1,33 @@
+[package]
+name = "doll-cipher"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Angel Dollface <angelbbe@proton.me>"]
+description= "A Rustacean implementation of an encryption algorithm of my own design."
+homepage = "https://github.com/angeldollface/doll-cipher"
+repository = "https://github.com/angeldollface/doll-cipher"
+keywords = [
+  "security"
+]
+categories = [
+  "security"
+]
+exclude = [
+  "/.github"
+]
+
+[dependencies]
+cliply = "0.2.0"
+rand = "0.8.5"
+
+[[bin]]
+name = "dc"
+path = "src/main.rs"
+
+[profile.release]
+lto = true
+strip = true
+opt-level = "z"
+panic = "abort"
+codegen-units = 1

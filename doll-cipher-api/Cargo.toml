@@ -1,0 +1,34 @@
+[package]
+name = "doll-cipher-api"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Angel Dollface <angelbbe@proton.me>"]
+description= "An API for a Rustacean implementation of an encryption algorithm of my own design."
+homepage = "https://github.com/angeldollface/doll-cipher"
+repository = "https://github.com/angeldollface/doll-cipher"
+keywords = [
+  "security"
+]
+categories = [
+  "security"
+]
+exclude = [
+  "/.github"
+]
+
+[dependencies]
+actix-web = "4.4.1"
+serde = { version = "1.0.193", features = [ "derive" ] }
+doll-cipher = { path = "../doll-cipher", version = "0.1.0" }
+
+[[bin]]
+name = "dca"
+path = "src/main.rs"
+
+[profile.release]
+lto = true
+strip = true
+opt-level = "z"
+panic = "abort"
+codegen-units = 1
