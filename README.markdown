@@ -54,10 +54,10 @@ Cipher Text:
 
 ## In a Rust project
 
-To use the ***Doll Cipher*** in your Rust project, add this line to your project's `Cargo.toml`:
+To use the ***Doll Cipher*** library in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-doll-cipher = { git = "https://github.com/angeldollface/doll-cipher", version = "0.1.0" }
+doll-cipher = { git = "https://github.com/angeldollface/doll-cipher", version = "0.1.0", path = "doll-cipher" }
 ```
 
 ## As a CLI tool
@@ -65,16 +65,20 @@ doll-cipher = { git = "https://github.com/angeldollface/doll-cipher", version = 
 Make sure you have Rust and Cargo installed. Once both of these tools are installed, you can execute this command from a command prompt:
 
 ```bash
-cargo install --git https://github.com/angeldollface/doll-cipher --path doll-cipher
+cargo install --git https://github.com/angeldollface/doll-cipher doll-cipher
 ```
+
+This makes the `dc` command available.
 
 ## The REST API binary
 
 Make sure you have Rust and Cargo installed. Once both of these tools are installed, you can execute this command from a command prompt:
 
 ```bash
-cargo install --git https://github.com/angeldollface/doll-cipher --path doll-cipher-api
+cargo install --git https://github.com/angeldollface/doll-cipher doll-cipher-api
 ```
+
+This makes the `dca` command available.
 
 ## USAGE :gear:
 
