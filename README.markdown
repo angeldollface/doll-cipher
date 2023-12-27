@@ -200,6 +200,8 @@ Route: /genkey/msec
 Example: http://localhost:8000/genkey/msec
 ```
 
+The REST API is deployed [here](https://doll-cipher.onrender.com).
+
 ## CHANGELOG :black_nib:
 
 ### Version 0.1.0
